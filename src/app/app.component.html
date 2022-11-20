@@ -10,16 +10,39 @@
             {{odd}}
           </li>
         </div>
-        <div *ngIf="!onlyOdd">
+        <!-- <div *ngIf="!onlyOdd">
+          <li class="list-group-item" [ngClass]="{odd: even % 2 !== 0}"
+            [ngStyle]="{backgroundColor: even % 2 !== 0 ? 'yellow' : 'transparent'}" *ngFor="let even of evenNumber">
+            {{even}}
+          </li>
+        </div> -->
+        <!-- custom structural directive  -->
+        <div *appUnless="onlyOdd">
           <li class="list-group-item" [ngClass]="{odd: even % 2 !== 0}"
             [ngStyle]="{backgroundColor: even % 2 !== 0 ? 'yellow' : 'transparent'}" *ngFor="let even of evenNumber">
             {{even}}
           </li>
         </div>
       </ul>
+      <!-- asterisk syntax base ng template -->
+      <!-- <ng-template [ngIf]="!onlyOdd">
+        <div>
+          <li class="list-group-item" [ngClass]="{odd: even % 2 !== 0}"
+            [ngStyle]="{backgroundColor: even % 2 !== 0 ? 'yellow' : 'transparent'}" *ngFor="let even of evenNumber">
+            {{even}}
+          </li>
+        </div>
+      </ng-template> -->
       <!-- custom attribute directive from basic-highlight -->
       <p appBasicHighlight>Style me with basic directive!</p>
       <p appBetterHighlight defaultColor="yellow" highlightColor="red">Style me with better directive!</p>
+      <!-- ng switch -->
+      <div [ngSwitch]="value">
+        <p *ngSwitchCase="5">value is 5</p>
+        <p *ngSwitchCase="10">value is 10</p>
+        <p *ngSwitchCase="100">value is 100</p>
+        <p *ngSwitchDefault>value is Default</p>
+      </div>
     </div>
   </div>
 </div>
